@@ -1,0 +1,16 @@
+mat-card {
+    top: 50px;
+    text-align: center;
+}
+
+.done {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+}
+@media (max-width: 720px) {
+    .hide-small {
+        display: none;
+    }
+}

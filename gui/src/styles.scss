@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+*/
+
+  @import '~@angular/material/theming';
+
+  @include mat-core();
+
+  $forest-app-primary: mat-palette($mat-brown, 800);       // Brown  <-- CUSTOM COLOR HERE!
+  $forest-app-accent:  mat-palette($mat-green, A400);      // Green  <-- CUSTOM COLOR HERE!
+
+  $forest-app-warn:    mat-palette($mat-deep-orange, 500); // Orange <-- CUSTOM COLOR HERE!
+
+  $forest-app-theme: mat-light-theme($forest-app-primary, $forest-app-accent, $forest-app-warn);
+
+  @include angular-material-theme($forest-app-theme);
+
+  mat-icon{
+      font-family: 'Material Icons' !important;
+  }
+  .my-background {
+      background: url(./assets/intro-bg.jpg) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+  }

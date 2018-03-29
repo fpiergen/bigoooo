@@ -1,0 +1,53 @@
+<mat-card style="margin-top: 50px;">
+    <h1 style="text-align: center;">Cost Calculator</h1>
+    <form  class="example-container" 
+           [formGroup]="form"
+           (ngSubmit)="submit(form.value)">
+        <mat-form-field>
+            <mat-label>Wall Section Name</mat-label>
+            <input matInput placeholder="Please name this section of wall" required formControlName="name">
+            <div style="color: red;" *ngIf="form.get('name').hasError('pattern')" class="error">
+                Name has invalid characters
+            </div>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Length(ft)</mat-label>
+            <input matInput type="number" placeholder="Length(feet)." required formControlName="length">
+            <mat-error>Please enter numbers only</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Height(in)</mat-label>
+            <input matInput type="number" placeholder="Height(inches)" required formControlName="height">
+            <mat-error>Please enter numbers only</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-radio-group formControlName="type1" required >
+            <mat-radio-button color="primary" value="straight" >Straight</mat-radio-button>
+            <mat-radio-button color="primary" value="curved">Curved</mat-radio-button>
+        </mat-radio-group>
+        <br>
+        <mat-radio-group formControlName="type2"  required>
+            <mat-radio-button color="primary" value="freeStanding" >Free Standing</mat-radio-button>
+            <mat-radio-button color="primary" value="retaining">Retaining</mat-radio-button>
+        </mat-radio-group>
+        <br>
+        <button color="primary" type="submit" [disabled]="!form.valid" mat-raised-button>Add Wall Section</button>
+        <br>
+    </form>
+
+    <div [hidden]="!hasSections()" style="text-align:center;">
+        <button  *ngIf="cost===0" mat-raised-button color="accent" (click)="calculateCost()">Calculate Cost</button>
+    </div>
+    <div *ngIf="cost!==0" style="text-align: center;">
+        <h1 >{{cost|currency}}</h1>
+        <h3 style="font-style: italic">***This is a rough estimate and excludes material***</h3>
+    </div>
+    <br>
+    <mat-chip-list  class="mat-chip-list-stacked" >
+        <mat-chip color="accent" [removable]="removable" (remove)= "remove(chip)"  *ngFor="let chip of wallSections" selected="true">
+            {{chip.name + ': ' + chip.type1 + ' ' + chip.type2 + ' dry stone wall ' + chip.length + ' feet long and ' + chip.height + ' inches high'}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+    </mat-chip-list>
+
+</mat-card>
