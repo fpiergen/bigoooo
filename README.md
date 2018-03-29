@@ -56,14 +56,19 @@ serverless create --template aws-nodejs
 npm init
 
 ## Add in plugins
+
+```
 npm i serverless-offline serverless-plugin-typescript serverless-dynamodb-local --save-dev
 in serverless.yml
     plugins:
       - serverless-plugin-typescript
       - serverless-offline
       - serverless-dynamodb-local
+```
 
 ## Install the local dynamo DB server
+
+```
 serverless dynamodb install
 
 Included following in yml so it starts when offline is started
@@ -93,19 +98,27 @@ resources:
             ReadCapacityUnits: 1
             WriteCapacityUnits: 1
 
+```
 ## Typescript
 Initialize the tsconfig file
+```
 tsc  --init  (see the tsconfig file for the configuration setting for typescript)
 
 install the lambda types
 npm i @types/aws-lambda --save-dev
 
+```
+
 ## Serverless startup
+
+```
 serverless offline start
-now all your code will be compiled as you make changes while Lambda is running locally.
+```
+Now all your code will be compiled as you make changes while Lambda is running locally.
 
 ## Lambda functions and AWS API Gateway
-ass to yml file
+Add to yml file
+```
 functions:
   cost:
     handler: src/handler.cost
@@ -113,16 +126,17 @@ functions:
       - http:
           path: cost
           method: post
+```
 
 
 ## Deployment
 
 Before deploying exclude modules that are not needed by adding the following to yml file.
 
+```
 package:
   exclude:
     - node_modules/**/*
   include:
     handler.ts
-
-finally add an endpoint via aws
+```
