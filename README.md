@@ -6,6 +6,51 @@
 
 - http://bigoooo.com
 
+## How to get running on your local machine
+
+```
+git clone https://github.com/fpiergen/bigoooo.git
+cd bigoooo
+npm install
+cd ../serverless
+npm install
+sls dynamodb install
+sls offline start
+Go to browser and open up DynamoDB Javascript shell to create a table entry in the local DynamoDB table.
+(I could not get this to seed automatically via a json file so it needs to be done manually each time you restart serverless offline)
+http://localhost:8000/shell/
+insert the following javascript and run
+var params = {
+TableName: 'TaperedStoneWall',
+           Item: { // a map of attribute name to AttributeValue
+
+name: 'Simple Straight',
+      rate: 80
+          // attribute_value (string | number | boolean | null | Binary | DynamoDBSet | Array | Object)
+          // more attributes...
+           },
+ReturnValues: 'NONE', // optional (NONE | ALL_OLD)
+              ReturnConsumedCapacity: 'NONE', // optional (NONE | TOTAL | INDEXES)
+              ReturnItemCollectionMetrics: 'NONE', // optional (NONE | SIZE)
+};
+docClient.put(params, function(err, data) {
+        if (err) ppJson(err); // an error occurred
+        else ppJson(data); // successful response
+        });
+Go to another window
+cd gui
+npm start
+Go to browser
+http://localhost:4100
+
+Everyting should be working. Changed server or gui code will be compiled automatically.
+*** Any Changes to the serverless.yml file will require a serverless offline restart ***
+```
+
+# DEVELOPMENT
+
+The following are development notes. I should probably put this all in a project tab.
+
 # GUI
 
 ## How generated 
