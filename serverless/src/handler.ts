@@ -23,6 +23,10 @@ const cost: Handler = (event: any, context: Context, callback: Callback) => {
 
         const response: CostResponse = {
             statusCode: 200,
+            headers: {
+                "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
+                "Access-Control-Allow-Credentials" : true // Required for cookies, authorization headers with HTTPS
+            },
             body: JSON.stringify({
                 cost: cost1 
             })

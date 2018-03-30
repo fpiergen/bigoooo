@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Validators, FormBuilder, FormGroup} from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { CurrencyPipe } from '@angular/common';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'cost',
@@ -9,6 +10,7 @@ import { CurrencyPipe } from '@angular/common';
   styleUrls: ['./cost.component.css']
 })
 export class CostComponent implements OnInit {
+
 
     form: FormGroup;
     wallSections = [];
@@ -50,11 +52,17 @@ export class CostComponent implements OnInit {
   }
 
   calculateCost() {
-      // Call a service and pass the list of wall sections. This is where
-      // we go to Amazon lambda or API which will call a lambda function
-      // Next just mock up a API http service to test it out.
-      //this.http.post('http://localhost:3000/cost', this.wallSections).subscribe((cost: number)=>{this.cost = cost});
-      this.http.post('http://localhost:3000/cost', this.wallSections).subscribe((resp: any)=>{this.cost = resp.cost;}, (err) => {console.log('The error is: ' + err);});
+
+      //let headers = new HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded");
+      let endPoint = 'http://localhost:3000/cost';
+
+      if (environment.production) {
+          endPoint = 'https://onz0pnjgv3.execute-api.us-east-1.amazonaws.com/dev/cost';
+      }
+
+      //this.http.post(endPoint, this.wallSections, {headers}).subscribe((resp: any)=>{this.cost = resp.cost;}, (err) => {console.log('The error is: ' + err);});
+      this.http.post(endPoint, this.wallSections).subscribe((resp: any)=>{this.cost = resp.cost;}, (err) => {console.log('The error is: ' + err);});
+
       //this.http.get('http://localhost:3000/hello').subscribe((response: any)=>{console.log(response)});
       //
   }

@@ -39,7 +39,9 @@ export class CostCalculator {
 	    Limit: 1, // optional (limit the number of items to evaluate)
 	};
 
-	let dynamodb = new DynamoDB();  // This should get all the correct defaults for production???
+	let dynamodb = new DynamoDB({
+		region: 'us-east-1'
+        });
 
 	if ( process.env.IS_OFFLINE )  {
 	    dynamodb = new DynamoDB({
