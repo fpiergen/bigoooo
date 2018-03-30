@@ -49,7 +49,7 @@ Everyting should be working. Changed server or gui code will be compiled automat
 
 # DEVELOPMENT
 
-The following are development notes.
+The following are development notes. I should probably put this all in a project tab.
 
 # GUI
 
