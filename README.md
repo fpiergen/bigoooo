@@ -140,3 +140,13 @@ package:
   include:
     handler.ts
 ```
+
+- Needed to include header Access-Control-Allow-Origin='*' in Angulars httpClient.post method  in order for CORS to work with AWS API client with Lambda proxy.
+- Added authorization to allow querying of Dynamo DB table from lambda function ( see serverless.yml ).
+- Used environment variable on GUI to switch from localhost to deployed API endmpoint.
+- Used SLS_OFF_LINE environment variable to swtich from localhost DYNAMO to AWS Dynamo.
+- To Deploy:
+-- sls deploy
+- To remove
+-- sls remove
+
