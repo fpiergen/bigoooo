@@ -10,6 +10,7 @@ export interface WallInput {
 // This is what is required by Callback argument 2 type;
 interface CostResponse {
       statusCode: number;
+      headers: Object;
       body: string;
 }
 
