@@ -1,5 +1,10 @@
 # BigOooo 
 
+# SUMMARY
+-Uses Angular with Material design for front end and Amazon's lambda, API Gateway and Dynamo DB for backend. The backend is managed using the serverless toolkit. Obvioulsy GIT as a source control tool.
+
+-This is a work in progress...  
+
 # GUI
 
 ## How generated 
