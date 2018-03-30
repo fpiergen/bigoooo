@@ -30,11 +30,11 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+TODO Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io). 
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+TODO Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
 
@@ -141,12 +141,11 @@ package:
     handler.ts
 ```
 
-- Needed to include header Access-Control-Allow-Origin='*' in Angulars httpClient.post method  in order for CORS to work with AWS API client with Lambda proxy.
+- Needed to include header Access-Control-Allow-Origin='*' in Angular's httpClient.post method in order for CORS to work with AWS API Gateway using a Lambda proxy.
 - Added authorization to allow querying of Dynamo DB table from lambda function ( see serverless.yml ).
-- Used environment variable on GUI to switch from localhost to deployed API endmpoint.
-- Used SLS_OFF_LINE environment variable to swtich from localhost DYNAMO to AWS Dynamo.
-- To Deploy:
--- sls deploy
-- To remove
--- sls remove
+- Used environment variable on GUI to switch from localhost to deployed API endpoint.
+- Used SLS_OFF_LINE environment variable to switch from localhost DYNAMO to AWS Dynamo.
+- To deploy:  sls deploy
+- To remove:  sls remove
+
 
