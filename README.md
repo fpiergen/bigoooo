@@ -8,6 +8,9 @@
 
 ## How to get running on your local machine
 
+- Need serverless installed (https://www.npmjs.com/package/serverless)
+- npm install -g serverless
+
 ```
 git clone https://github.com/fpiergen/bigoooo.git
 cd bigoooo
