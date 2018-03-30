@@ -16,7 +16,8 @@ cd ../serverless
 npm install
 sls dynamodb install
 sls offline start
-Go to browser and open up DynamoDB Javascript shell
+Go to browser and open up DynamoDB Javascript shell to create a table entry in the local DynamoDB table.
+(I could not get this to seed automatically via a json file so it needs to be done manually each time you restart serverless offline)
 http://localhost:8000/shell/
 insert the following javascript and run
 var params = {
